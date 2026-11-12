@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Central de Projetos - Nanasichero</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!-- Animação de carregamento -->
+    <div id="loading" class="loading-container">
+        <div class="spinner"></div>
+        <p class="message">Carregando projetos do GitHub...</p>
+    </div>
 
-    <header>
-        <h1 id="user-name">Meus Projetos & Sites</h1>
-        <p>Uma central protegida com todos os meus sites e aplicações.</p>
-    </header>
+    <div id="projects-grid" class="grid"></div>
 
-    <main>
-        <!-- Elemento de Carregamento com Animação -->
-        <div id="loading" class="loading-container">
-            <div class="spinner"></div>
-            <p class="message">Aguardando senha de acesso...</p>
-        </div>
-
-        <div id="projects-grid" class="grid"></div>
-    </main>
-
-    <!-- Importa os scripts -->
-    <script src="trava.js"></script>
+    <!-- Apenas o app.js deve estar aqui agora -->
     <script src="app.js"></script>
 </body>
 </html>
