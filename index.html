@@ -1,12 +1,40 @@
-    <!-- Animação de carregamento -->
-    <div id="loading" class="loading-container">
-        <div class="spinner"></div>
-        <p class="message">Carregando projetos do GitHub...</p>
-    </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Projetos - Nanasichero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div id="projects-grid" class="grid"></div>
+    <!-- 🌟 Menu Superior Bonitinho -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <span class="nav-logo">⚡ Nanasichero Hub</span>
+            <div class="nav-links">
+                <a href="https://github.com/nanasichero" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Apenas o app.js deve estar aqui agora -->
+    <header class="hero">
+        <h1>Meus Projetos & Sites</h1>
+        <p>Uma central automática com todos os meus sites e aplicações desenvolvidos.</p>
+    </header>
+
+    <main class="container">
+        <!-- Animação de Carregamento -->
+        <div id="loading" class="loading-container">
+            <div class="spinner"></div>
+            <p class="message">Carregando projetos do GitHub...</p>
+        </div>
+
+        <!-- Onde os cards dos projetos aparecem automaticamente -->
+        <div id="projects-grid" class="grid"></div>
+    </main>
+
+    <!-- Script que busca os projetos -->
     <script src="app.js"></script>
 </body>
 </html>
