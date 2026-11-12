@@ -14,11 +14,16 @@
     </header>
 
     <main>
-        <div id="loading" class="message">Aguardando senha de acesso...</div>
+        <!-- Elemento de Carregamento com Animação -->
+        <div id="loading" class="loading-container">
+            <div class="spinner"></div>
+            <p class="message">Aguardando senha de acesso...</p>
+        </div>
+
         <div id="projects-grid" class="grid"></div>
     </main>
 
-    <!-- Importa a trava de senha primeiro e o app.js depois -->
+    <!-- Importa os scripts -->
     <script src="trava.js"></script>
     <script src="app.js"></script>
 </body>
