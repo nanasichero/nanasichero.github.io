@@ -5,24 +5,36 @@ async function iniciarAplicacao() {
     const loadingElement = document.getElementById('loading');
 
     try {
-        const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=50`);
+        console.log("Buscando repositórios para:", nanasichero);
+        
+        const response = await fetch(`https://api.github.com/users/${nanasichero}/repos?sort=updated&per_page=50`);
         
         if (!response.ok) {
-            throw new Error('Não foi possível carregar os repositórios.');
+            throw new Error(`Erro na API do GitHub: ${response.status}`);
         }
 
         const repos = await response.json();
-        loadingElement.style.display = 'none';
+        
+        // Remove o elemento de carregamento com segurança
+        if (loadingElement) {
+            loadingElement.style.display = 'none';
+        }
 
-        const filteredRepos = repos.filter(repo => repo.name.toLowerCase() !== `${GITHUB_USER}` && repo.name.toLowerCase() !== `${GITHUB_USER}.github.io`);
+        // Filtra para remover o próprio repositório da central
+        const filteredRepos = repos.filter(repo => {
+            const nomeRepo = repo.name.toLowerCase();
+            return nomeRepo !== nanasichero.toLowerCase() && nomeRepo !== `${GITHUB_USER.toLowerCase()}.github.io`;
+        });
 
         if (filteredRepos.length === 0) {
-            gridElement.innerHTML = '<p class="message">Nenhum projeto encontrado.</p>';
+            gridElement.innerHTML = '<p class="message">Nenhum projeto público encontrado no seu perfil.</p>';
             return;
         }
 
+        gridElement.innerHTML = ''; // Limpa o grid
+
         filteredRepos.forEach(repo => {
-            const siteUrl = repo.homepage ? repo.homepage : `https://${GITHUB_USER}.github.io/${repo.name}/`;
+            const siteUrl = repo.homepage ? repo.homepage : `https://${nanasichero}.github.io/${repo.name}/`;
             const repoUrl = repo.html_url;
             const description = repo.description ? repo.description : 'Sem descrição informada.';
             const formattedName = repo.name.replace(/-/g, ' ');
@@ -45,7 +57,9 @@ async function iniciarAplicacao() {
         });
 
     } catch (error) {
-        console.error(error);
-        loadingElement.textContent = 'Erro ao carregar os projetos. Verifique se o repositório é público.';
+        console.error("Erro detalhado:", error);
+        if (loadingElement) {
+            loadingElement.innerHTML = `<span style="color: #ef4444;">Erro ao carregar projetos. Verifique o console (F12).</span>`;
+        }
     }
 }
