@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Projetos - Nanasichero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="user-name">Meus Projetos & Sites</h1>
+        <p>Uma central protegida com todos os meus sites e aplicações.</p>
+    </header>
+
+    <main>
+        <div id="loading" class="message">Aguardando senha de acesso...</div>
+        <div id="projects-grid" class="grid"></div>
+    </main>
+
+    <!-- Importa a trava de senha primeiro e o app.js depois -->
+    <script src="trava.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
