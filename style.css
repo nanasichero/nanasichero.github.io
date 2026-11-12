@@ -26,6 +26,7 @@ header {
 h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 p {
@@ -33,7 +34,7 @@ p {
     font-size: 1.1rem;
 }
 
-/* Estilo da Animação de Carregamento */
+/* Estilo e animação do círculo de carregamento */
 .loading-container {
     display: flex;
     flex-direction: column;
@@ -63,6 +64,7 @@ p {
     text-align: center;
 }
 
+/* Grid de projetos (organiza os cards automaticamente) */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -71,6 +73,7 @@ p {
     max-width: 1000px;
 }
 
+/* Estilo dos Cards de cada site */
 .card {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -96,6 +99,7 @@ p {
 .card p {
     font-size: 0.95rem;
     margin-bottom: 20px;
+    color: var(--text-muted);
 }
 
 .card-footer {
@@ -104,6 +108,7 @@ p {
     flex-wrap: wrap;
 }
 
+/* Botões */
 .btn {
     display: inline-block;
     background-color: var(--accent);
