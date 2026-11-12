@@ -1,14 +1,12 @@
 const GITHUB_USER = 'nanasichero';
 
-async function iniciarAplicacao() {
+async function carregarProjetos() {
     const gridElement = document.getElementById('projects-grid');
     const loadingElement = document.getElementById('loading');
 
     try {
-        // Faz a requisição para a API oficial do GitHub
         const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=50`);
         
-        // Se o GitHub bloquear por limite de requisições (Erro 403)
         if (response.status === 403) {
             throw new Error('Limite de requisições da API do GitHub atingido temporariamente. Aguarde alguns minutos.');
         }
@@ -19,7 +17,7 @@ async function iniciarAplicacao() {
 
         const repos = await response.json();
         
-        // Oculta a animação de carregamento
+        // Remove a animação de carregamento
         if (loadingElement) {
             loadingElement.style.display = 'none';
         }
@@ -37,7 +35,7 @@ async function iniciarAplicacao() {
 
         gridElement.innerHTML = ''; // Limpa o grid
 
-        // Cria os cards dinamicamente para cada repositório encontrado
+        // Cria os cards para cada projeto
         filteredRepos.forEach(repo => {
             const siteUrl = repo.homepage ? repo.homepage : `https://${GITHUB_USER}.github.io/${repo.name}/`;
             const repoUrl = repo.html_url;
@@ -69,3 +67,5 @@ async function iniciarAplicacao() {
     }
 }
 
+// Executa a função automaticamente assim que o script é lido
+carregarProjetos();
