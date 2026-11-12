@@ -5,7 +5,11 @@ function verificarSenha() {
     const senhaDigitada = prompt('🔒 Esta é uma central protegida.\nDigite a senha de acesso:');
 
     if (senhaDigitada === SENHA_CORRETA) {
-        document.getElementById('loading').textContent = 'Carregando projetos...';
+        // Atualiza o texto abaixo da animação enquanto busca os dados
+        const textElement = document.querySelector('#loading .message');
+        if (textElement) {
+            textElement.textContent = 'Carregando projetos do GitHub...';
+        }
         
         if (typeof iniciarAplicacao === 'function') {
             iniciarAplicacao();
